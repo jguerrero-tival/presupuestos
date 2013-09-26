@@ -4,6 +4,6 @@ README.txt
 demos/
 extras/documentation
 *~
-.classpath
-.project
-*/target/*
+*.classpath
+*.project
+/**/target
