@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.budget.Item"
+		schema="PRESUPUESTAR" table="ITEM" entity-name="Item">
+
+		<id name="id" type="long" column="ITEM_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="name" type="string" column="NAME" length="30"
+			not-null="true" />
+		<property name="price" type="double" column="PRICE" not-null="true" />
+		<property name="quantity" type="int" column="QUANTITY" not-null="true" />
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.user.profile.Address" schema="PRESUPUESTAR"
+		table="ADDRESS" entity-name="Address">
+
+		<id name="id" type="long" column="ADDRESS_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="addressLine1" type="string" column="ADDRESS_LINE_1"
+			length="50" not-null="true" />
+		<property name="addressLine2" type="string" column="ADDRESS_LINE_2"
+			length="40" not-null="false" />
+		<property name="zipCode" type="string" column="ZIP_CODE"
+			length="10" not-null="true" />
+		<property name="city" type="string" column="CITY" length="15"
+			not-null="false" />
+		<property name="state" type="string" column="STATE" length="15"
+			not-null="false" />
+		<property name="country" type="string" column="COUNTRY"
+			length="15" not-null="false" />
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.budget.Budget" schema="PRESUPUESTAR"
+		table="BUDGET" entity-name="Budget">
+
+		<id name="id" type="long" column="BUDGET_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="amount" type="double" column="AMOUNT"
+			not-null="true" />
+		<many-to-one name="laborBudget" class="LaborBudget"
+			not-null="true" cascade="save-update" unique="true">
+			<column name="LABOR_BUDGET_ID" />
+		</many-to-one>
+		<many-to-one name="productBudget" class="ProductsBudget"
+			not-null="true" cascade="save-update" unique="true">
+			<column name="PRODUCTS_BUDGET_ID" />
+		</many-to-one>
+		<list name="feedbacks" table="FEEDBACK" inverse="true" lazy="true"
+			fetch="select">
+			<key column="BUDGET_ID" not-null="true" />
+			<list-index column="BGT_FBK_IDX" />
+			<one-to-many class="Feedback" />
+		</list>
+		<property name="averageScore" type="float" column="AVG_SCORE"
+			not-null="true" />
+
+	</class>
+</hibernate-mapping>

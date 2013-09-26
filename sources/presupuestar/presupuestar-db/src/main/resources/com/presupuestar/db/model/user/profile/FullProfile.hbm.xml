@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.user.profile.FullProfile"
+		schema="PRESUPUESTAR" table="FULL_PROFILE" entity-name="FullProfile">
+
+		<id name="id" type="long" column="FULL_PROFILE_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="firstName" type="string" column="FIRST_NAME"
+			length="15" not-null="false" />
+		<property name="lastName" type="string" column="LAST_NAME"
+			length="15" not-null="false" />
+		<property name="reason" type="string" column="REASON" length="25"
+			not-null="false" />
+		<property name="webPage" type="string" column="WEB_PAGE"
+			length="50" not-null="false" />
+		<list name="addresses" table="ADDRESS" lazy="true" fetch="select">
+			<key column="PROFILE_ID" not-null="true" />
+			<list-index column="LIST_INDEX" />
+			<one-to-many class="Address" />
+		</list>
+		<list name="phones" table="PHONE" lazy="true" fetch="select">
+			<key column="PROFILE_ID" not-null="true" />
+			<list-index column="LIST_INDEX" />
+			<one-to-many class="Phone" />
+		</list>
+
+	</class>
+</hibernate-mapping>

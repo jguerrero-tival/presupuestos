@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.budget.ProductsBudget" schema="PRESUPUESTAR"
+		table="PRODUCTS_BUDGET" entity-name="ProductsBudget">
+
+		<id name="id" type="long" column="PRODUCTS_BUDGET_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="amount" type="double" column="AMOUNT" not-null="true" />
+		<many-to-one name="commerce" class="Commerce"
+			not-null="true" cascade="none" unique="true">
+			<column name="COMMERCE_ID" />
+		</many-to-one>
+		<list name="itemsBudget" table="ITEM_BUDGET" lazy="true" fetch="select">
+			<key column="PRODUCTS_BUDGET_ID" not-null="true" />
+			<list-index column="PRODBGT_ITEM_IDX" />
+			<one-to-many class="ItemBudget" />
+		</list>
+
+	</class>
+</hibernate-mapping>

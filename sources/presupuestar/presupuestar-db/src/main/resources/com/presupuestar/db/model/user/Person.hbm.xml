@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.user.Person" schema="PRESUPUESTAR"
+		table="PERSON" entity-name="Person">
+
+		<id name="id" type="long" column="PERSON_ID">
+			<generator class="native" />
+		</id>
+
+		<component name="access" class="com.presupuestar.model.user.UserAccess">
+			<property name="email" type="string" column="EMAIL" length="35"
+				not-null="true" />
+			<property name="password" type="string" column="PASSWORD"
+				length="10" not-null="true" />
+		</component>
+		<many-to-one name="profile" class="BasicProfile" not-null="true"
+			cascade="all" unique="true">
+			<column name="PROFILE_ID" />
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

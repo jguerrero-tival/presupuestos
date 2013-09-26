@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.budget.LaborBudget" schema="PRESUPUESTAR"
+		table="LABOR_BUDGET" entity-name="LaborBudget">
+
+		<id name="id" type="long" column="LABOR_BUDGET_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="amount" type="double" column="AMOUNT" not-null="true" />
+		<many-to-one name="proffesional" class="Proffesional"
+			not-null="true" cascade="none" unique="true">
+			<column name="PROFFESIONAL_ID" />
+		</many-to-one>
+		<many-to-one name="laborDetail" class="LaborDetail"
+			not-null="true" cascade="all" unique="true">
+			<column name="LABOR_DETAIL_ID" />
+		</many-to-one>
+		<many-to-one name="productsDetail" class="ProductsDetail"
+			not-null="false" cascade="all" unique="true">
+			<column name="PRODUCTS_DETAIL_ID" />
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.user.Commerce" schema="PRESUPUESTAR"
+		table="COMMERCE" entity-name="Commerce">
+
+		<id name="id" type="long" column="COMMERCE_ID">
+			<generator class="native" />
+		</id>
+
+		<component name="access" class="com.presupuestar.model.user.UserAccess">
+			<property name="email" type="string" column="EMAIL" length="35"
+				not-null="true" />
+			<property name="password" type="string" column="PASSWORD"
+				length="10" not-null="true" />
+		</component>
+		<many-to-one name="profile" class="FullProfile" not-null="true"
+			cascade="all" unique="true">
+			<column name="PROFILE_ID" />
+		</many-to-one>
+		<many-to-one name="store" class="Store" not-null="false"
+			cascade="all" unique="true">
+			<column name="STORE_ID" />
+		</many-to-one>
+		<list name="budgets" table="PRODUCTS_BUDGET" inverse="true" lazy="true"
+			fetch="select">
+			<key column="COMMERCE_ID2" not-null="true" />
+			<list-index column="COMM_BUDGET_IDX" />
+			<one-to-many class="ProductsBudget" />
+		</list>
+		<list name="feedbacks" table="FEEDBACK" inverse="true" lazy="true"
+			fetch="select">
+			<key column="COMMERCE_ID" not-null="true" />
+			<list-index column="COMM_FBK_IDX" />
+			<one-to-many class="Feedback" />
+		</list>
+		<property name="averageScore" type="float" column="AVG_SCORE"
+			not-null="true" />
+		
+	</class>
+</hibernate-mapping>

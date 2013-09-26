@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="abstractDao" abstract="true" class="com.presupuestar.db.dao.impl.AbstractHibernateDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="budgetDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.BudgetDAOImpl"/>
+	<bean id="commerceDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.CommerceDAOImpl"/>
+	<bean id="feedbackDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.FeedbackDAOImpl"/>
+	<bean id="personDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.PersonDAOImpl"/>
+	<bean id="proffesionalDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.ProffesionalDAOImpl"/>
+	<bean id="proffesionDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.ProffesionDAOImpl"/>
+
+</beans>

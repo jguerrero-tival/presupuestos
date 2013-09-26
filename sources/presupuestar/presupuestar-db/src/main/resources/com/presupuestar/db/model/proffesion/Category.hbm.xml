@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.proffesion.Category" schema="PRESUPUESTAR"
+		table="CATEGORY" entity-name="Category">
+
+		<id name="id" type="long" column="CATEGORY_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="name" type="string" column="NAME" length="30"
+			not-null="true" />
+		<list name="proffesions" table="PROFFESION" inverse="true" lazy="true"
+			fetch="select">
+			<key column="CATEGORY_ID" not-null="true" />
+	         <list-index column="LIST_INDEX"/>
+			<one-to-many class="Proffesion" />
+		</list>
+
+	</class>
+</hibernate-mapping>

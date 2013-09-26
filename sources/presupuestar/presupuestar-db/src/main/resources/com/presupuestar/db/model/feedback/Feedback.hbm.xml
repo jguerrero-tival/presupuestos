@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.feedback.Feedback" schema="PRESUPUESTAR"
+		table="FEEDBACK" entity-name="Feedback">
+
+		<id name="id" type="long" column="FEEDBACK_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="type" column="FEEDBACK_TYPE" length="10"
+			not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.presupuestar.model.feedback.FeedbackType</param>
+				<param name="sqlType">12</param>
+			</type>
+		</property>
+		<any name="feedbackOn" id-type="long" meta-type="string">
+			<meta-value value="BUDGET" class="Budget" />
+			<meta-value value="COMMERCE" class="Commerce" />
+			<meta-value value="PROFFESIONAL" class="Proffesional" />
+			<column name="FEEDBACK_ON_CLASS" />
+			<column name="FEEDBACK_ON_ID" />
+		</any>
+		<property name="score" type="int" column="SCORE" not-null="true" />
+		<list name="comments" table="COMMENT" lazy="true" fetch="select">
+			<key column="FEEDBACK_ID" not-null="true" />
+			<list-index column="FBK_COMMENT_IDX" />
+			<one-to-many class="Comment" />
+		</list>
+
+	</class>
+</hibernate-mapping>

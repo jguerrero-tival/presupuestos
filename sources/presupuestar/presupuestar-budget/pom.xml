@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.presupuestar</groupId>
+    <artifactId>presupuestar</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.presupuestar.budget</groupId>
+  <artifactId>presupuestar-budget</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>presupuestar-budget</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <!-- Presupuestar dependencies -->
+    <dependency>
+      <groupId>com.presupuestar.db</groupId>
+	  <artifactId>presupuestar-db</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>

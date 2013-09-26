@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.presupuestar.model.proffesion.Proffesion"
+		schema="PRESUPUESTAR" table="PROFFESION" entity-name="Proffesion">
+
+		<id name="id" type="long" column="PROFFESION_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="name" type="string" column="NAME" length="30"
+			not-null="true" />
+		<many-to-one name="category" class="Category" not-null="true"
+			cascade="save-update" unique="true">
+			<column name="CATEGORY_ID" />
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>
