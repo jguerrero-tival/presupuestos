@@ -15,40 +15,9 @@
   <dependencies>
     <!-- Presupuestar dependencies -->
     <dependency>
-      <groupId>com.presupuestar.advertising</groupId>
-	  <artifactId>presupuestar-advertising</artifactId>
+      <groupId>com.presupuestar.security</groupId>
+	  <artifactId>presupuestar-security</artifactId>
 	  <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.presupuestar.budget</groupId>
-	  <artifactId>presupuestar-budget</artifactId>
-	  <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.presupuestar.feedback</groupId>
-	  <artifactId>presupuestar-feedback</artifactId>
-	  <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.presupuestar.search</groupId>
-	  <artifactId>presupuestar-search</artifactId>
-	  <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.presupuestar.user</groupId>
-	  <artifactId>presupuestar-user</artifactId>
-	  <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <!-- Spring Security dependencies -->
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-        <version>3.1.4.RELEASE</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-config</artifactId>
-        <version>3.1.4.RELEASE</version>
     </dependency>
   </dependencies>
 </project>
