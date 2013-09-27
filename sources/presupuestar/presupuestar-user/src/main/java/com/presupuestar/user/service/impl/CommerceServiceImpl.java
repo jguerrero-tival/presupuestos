@@ -1,5 +1,6 @@
 package com.presupuestar.user.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.presupuestar.db.dao.CommerceDAO;
@@ -8,6 +9,7 @@ import com.presupuestar.model.user.Commerce;
 import com.presupuestar.user.builder.UserBuilder;
 import com.presupuestar.user.service.CommerceService;
 
+@Service
 @Transactional
 public class CommerceServiceImpl implements CommerceService {
 

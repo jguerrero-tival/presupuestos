@@ -1,5 +1,6 @@
 package com.presupuestar.user.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.presupuestar.db.dao.ProffesionalDAO;
@@ -10,6 +11,7 @@ import com.presupuestar.model.user.ProffesionalType;
 import com.presupuestar.user.builder.UserBuilder;
 import com.presupuestar.user.service.ProffesionalService;
 
+@Service
 @Transactional
 public class ProffesionalServiceImpl implements ProffesionalService {
 
