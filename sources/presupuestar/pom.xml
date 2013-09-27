@@ -14,6 +14,7 @@
     <module>presupuestar-feedback</module>
     <module>presupuestar-model</module>
     <module>presupuestar-search</module>
+    <module>presupuestar-security</module>
     <module>presupuestar-user</module>
     <module>presupuestar-web</module>
   </modules>
