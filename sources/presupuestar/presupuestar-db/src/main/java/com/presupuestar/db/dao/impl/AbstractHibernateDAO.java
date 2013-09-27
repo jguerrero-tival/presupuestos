@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.google.common.base.Preconditions;
 import com.presupuestar.db.dao.HibernateDAO;
 
+@Repository
 public abstract class AbstractHibernateDAO<T extends Serializable> implements
 		HibernateDAO<T> {
 
