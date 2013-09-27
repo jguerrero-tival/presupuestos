@@ -51,7 +51,7 @@ public class UserBuilder {
 	}
 
 	public void buildReason(String reason) {
-		((Commerce) user).getProfile().setReason(reason);
+		((FullProfile) user.getProfile()).setReason(reason);
 	}
 
 	public void buildProffesionalType(ProffesionalType type) {

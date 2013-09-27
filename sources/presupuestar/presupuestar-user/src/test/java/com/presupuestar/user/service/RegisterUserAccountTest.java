@@ -13,7 +13,6 @@ import com.presupuestar.model.proffesion.Proffesion;
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
 import com.presupuestar.model.user.Proffesional;
-import com.presupuestar.model.user.ProffesionalType;
 import com.presupuestar.model.user.User;
 import com.presupuestar.user.service.impl.CommerceServiceImpl;
 import com.presupuestar.user.service.impl.PersonServiceImpl;
@@ -48,9 +47,20 @@ public class RegisterUserAccountTest {
 		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
 		Proffesional proffesional = proffesionalService
 				.registerNewProffesionalAccount(EMAIL, PASSWORD, FIRST_NAME,
-						LAST_NAME, ProffesionalType.SELF_EMPLOYED, proffesion);
+						LAST_NAME, proffesion);
 		Assert.assertNotNull(proffesional);
 		assertUserAccess(proffesional);
+	}
+
+	@Test
+	public void refisterNewCompanyAccount() {
+		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
+				.getDao(ProffesionDAO.class);
+		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
+		Proffesional company = proffesionalService.registerNewCompanyAccount(
+				EMAIL, PASSWORD, REASON, proffesion);
+		Assert.assertNotNull(company);
+		assertUserAccess(company);
 	}
 
 	@Test
