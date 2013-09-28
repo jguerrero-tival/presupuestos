@@ -22,6 +22,10 @@ import com.presupuestar.model.user.store.Product;
 @Transactional
 public class CommerceDAOTest {
 
+	private static final String EMAIL = "commerce@presupuestar.com",
+			PASSWORD = "password";
+	private static final String WRONG_EMAIL = "wrong@presupuestar.com";
+
 	@Test
 	public void getAllCommerces() {
 		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
@@ -51,6 +55,25 @@ public class CommerceDAOTest {
 				Assert.assertNotNull(feedback);
 			}
 		}
+	}
+
+	@Test
+	public void getPersonByLoginAccess() {
+		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
+				.getDao(CommerceDAO.class);
+		Commerce commerce = commerceDAO.getByLoginAccess(EMAIL, PASSWORD);
+		Assert.assertNotNull(commerce);
+		Assert.assertNotNull(commerce.getAccess());
+		Assert.assertEquals(commerce.getAccess().getEmail(), EMAIL);
+		Assert.assertEquals(commerce.getAccess().getPassword(), PASSWORD);
+	}
+
+	@Test
+	public void getPersonByWrongLoginAccess() {
+		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
+				.getDao(CommerceDAO.class);
+		Commerce commerce = commerceDAO.getByLoginAccess(WRONG_EMAIL, PASSWORD);
+		Assert.assertNull(commerce);
 	}
 
 }

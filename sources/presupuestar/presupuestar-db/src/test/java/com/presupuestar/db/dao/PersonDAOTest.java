@@ -17,6 +17,10 @@ import com.presupuestar.model.user.Person;
 @Transactional
 public class PersonDAOTest {
 
+	private static final String EMAIL = "person@presupuestar.com",
+			PASSWORD = "password";
+	private static final String WRONG_EMAIL = "wrong@presupuestar.com";
+
 	@Test
 	public void getAllPersons() {
 		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
@@ -28,6 +32,25 @@ public class PersonDAOTest {
 			Assert.assertNotNull(person.getProfile());
 			Assert.assertNotNull(person.getAccess());
 		}
+	}
+
+	@Test
+	public void getPersonByLoginAccess() {
+		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
+				PersonDAO.class);
+		Person person = personDao.getByLoginAccess(EMAIL, PASSWORD);
+		Assert.assertNotNull(person);
+		Assert.assertNotNull(person.getAccess());
+		Assert.assertEquals(person.getAccess().getEmail(), EMAIL);
+		Assert.assertEquals(person.getAccess().getPassword(), PASSWORD);
+	}
+
+	@Test
+	public void getPersonByWrongLoginAccess() {
+		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
+				PersonDAO.class);
+		Person person = personDao.getByLoginAccess(WRONG_EMAIL, PASSWORD);
+		Assert.assertNull(person);
 	}
 
 }

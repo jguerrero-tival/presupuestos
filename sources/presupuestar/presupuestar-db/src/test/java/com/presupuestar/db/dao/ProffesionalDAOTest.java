@@ -22,6 +22,10 @@ import com.presupuestar.model.user.profile.Phone;
 @Transactional
 public class ProffesionalDAOTest {
 
+	private static final String EMAIL = "proffesional@presupuestar.com",
+			PASSWORD = "password";
+	private static final String WRONG_EMAIL = "wrong@presupuestar.com";
+
 	@Test
 	public void getAllProffesionals() {
 		ProffesionalDAO proffesionalDao = (ProffesionalDAO) DAOLocator
@@ -54,6 +58,27 @@ public class ProffesionalDAOTest {
 				Assert.assertNotNull(feedback);
 			}
 		}
+	}
+
+	@Test
+	public void getPersonByLoginAccess() {
+		ProffesionalDAO proffesionalDao = (ProffesionalDAO) DAOLocator
+				.getInstance().getDao(ProffesionalDAO.class);
+		Proffesional proffesional = proffesionalDao.getByLoginAccess(EMAIL,
+				PASSWORD);
+		Assert.assertNotNull(proffesional);
+		Assert.assertNotNull(proffesional.getAccess());
+		Assert.assertEquals(proffesional.getAccess().getEmail(), EMAIL);
+		Assert.assertEquals(proffesional.getAccess().getPassword(), PASSWORD);
+	}
+
+	@Test
+	public void getPersonByWrongLoginAccess() {
+		ProffesionalDAO proffesionalDao = (ProffesionalDAO) DAOLocator
+				.getInstance().getDao(ProffesionalDAO.class);
+		Proffesional proffesional = proffesionalDao.getByLoginAccess(
+				WRONG_EMAIL, PASSWORD);
+		Assert.assertNull(proffesional);
 	}
 
 }

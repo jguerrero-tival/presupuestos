@@ -30,19 +30,19 @@ public abstract class AbstractHibernateDAO<T extends Serializable> implements
 	}
 
 	protected final Session getCurrentSession() {
-		return this.sessionFactory.getCurrentSession();
+		return sessionFactory.getCurrentSession();
 	}
 
 	@SuppressWarnings("unchecked")
 	public T getById(final Long id) {
 		Preconditions.checkArgument(id != null);
-		return (T) this.getCurrentSession().get(this.clazz.getSimpleName(), id);
+		return (T) getCurrentSession().get(clazz.getSimpleName(), id);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<T> getAll() {
 		return this.getCurrentSession()
-				.createQuery("from " + this.clazz.getSimpleName()).list();
+				.createQuery("from " + clazz.getSimpleName()).list();
 	}
 
 	public void create(final T entity) {
