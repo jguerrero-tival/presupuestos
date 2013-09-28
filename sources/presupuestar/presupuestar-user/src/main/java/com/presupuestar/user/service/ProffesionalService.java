@@ -11,4 +11,6 @@ public interface ProffesionalService {
 	Proffesional registerNewProffesionalAccount(String email, String password,
 			String firstName, String lastName, Proffesion proffesion);
 
+	Proffesional userLogin(String email, String password);
+
 }

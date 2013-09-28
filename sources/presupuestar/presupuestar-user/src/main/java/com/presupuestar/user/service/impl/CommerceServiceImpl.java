@@ -26,4 +26,11 @@ public class CommerceServiceImpl implements CommerceService {
 		return commerce;
 	}
 
+	@Override
+	public Commerce userLogin(String email, String password) {
+		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
+				.getDao(CommerceDAO.class);
+		return commerceDAO.getByLoginAccess(email, password);
+	}
+
 }

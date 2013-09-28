@@ -46,4 +46,11 @@ public class ProffesionalServiceImpl implements ProffesionalService {
 		return proffesional;
 	}
 
+	@Override
+	public Proffesional userLogin(String email, String password) {
+		ProffesionalDAO proffesionalDao = (ProffesionalDAO) DAOLocator
+				.getInstance().getDao(ProffesionalDAO.class);
+		return proffesionalDao.getByLoginAccess(email, password);
+	}
+
 }

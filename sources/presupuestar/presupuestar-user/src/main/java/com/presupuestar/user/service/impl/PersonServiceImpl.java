@@ -26,4 +26,11 @@ public class PersonServiceImpl implements PersonService {
 		return person;
 	}
 
+	@Override
+	public Person userLogin(String email, String password) {
+		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
+				PersonDAO.class);
+		return personDao.getByLoginAccess(email, password);
+	}
+
 }
