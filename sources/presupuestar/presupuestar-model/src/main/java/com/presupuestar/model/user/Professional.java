@@ -5,25 +5,25 @@ import java.util.List;
 import com.presupuestar.model.budget.LaborBudget;
 import com.presupuestar.model.feedback.Feedback;
 import com.presupuestar.model.feedback.Rankeable;
-import com.presupuestar.model.proffesion.Proffesion;
+import com.presupuestar.model.profession.Profession;
 import com.presupuestar.model.user.profile.FullProfile;
 
-public class Proffesional extends User implements Rankeable {
+public class Professional extends User implements Rankeable {
 
 	private static final long serialVersionUID = 1L;
 
 	private FullProfile profile;
-	private ProffesionalType type;
-	private Proffesion proffesion;
+	private ProfessionalType type;
+	private Profession profession;
 	private List<LaborBudget> budgets;
 	private List<Feedback> feedbacks;
 	private float averageScore;
 
-	public Proffesional() {
+	public Professional() {
 		super();
 	}
 
-	public Proffesional(UserAccess access) {
+	public Professional(UserAccess access) {
 		super(access);
 	}
 
@@ -35,20 +35,20 @@ public class Proffesional extends User implements Rankeable {
 		this.profile = profile;
 	}
 
-	public ProffesionalType getType() {
+	public ProfessionalType getType() {
 		return type;
 	}
 
-	public void setType(ProffesionalType type) {
+	public void setType(ProfessionalType type) {
 		this.type = type;
 	}
 
-	public Proffesion getProffesion() {
-		return proffesion;
+	public Profession getProfession() {
+		return profession;
 	}
 
-	public void setProffesion(Proffesion proffesion) {
-		this.proffesion = proffesion;
+	public void setProfession(Profession profession) {
+		this.profession = profession;
 	}
 
 	public List<LaborBudget> getBudgets() {

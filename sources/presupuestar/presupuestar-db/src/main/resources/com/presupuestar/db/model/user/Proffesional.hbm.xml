@@ -3,10 +3,10 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.presupuestar.model.user.Proffesional" schema="PRESUPUESTAR"
-		table="PROFFESIONAL" entity-name="Proffesional">
+	<class name="com.presupuestar.model.user.Professional" schema="PRESUPUESTAR"
+		table="PROFESSIONAL" entity-name="Professional">
 
-		<id name="id" type="long" column="PROFFESIONAL_ID">
+		<id name="id" type="long" column="PROFESSIONAL_ID">
 			<generator class="native" />
 		</id>
 
@@ -20,26 +20,26 @@
 			cascade="all" unique="true">
 			<column name="PROFILE_ID" />
 		</many-to-one>
-		<property name="type" column="PROFFESIONAL_TYPE" length="15"
+		<property name="type" column="PROFESSIONAL_TYPE" length="15"
 			not-null="true">
 			<type name="org.hibernate.type.EnumType">
-				<param name="enumClass">com.presupuestar.model.user.ProffesionalType</param>
+				<param name="enumClass">com.presupuestar.model.user.ProfessionalType</param>
 				<param name="sqlType">12</param>
 			</type>
 		</property>
-		<many-to-one name="proffesion" class="Proffesion"
+		<many-to-one name="profession" class="Profession"
 			not-null="true" cascade="all" unique="true">
-			<column name="PROFFESION_ID" />
+			<column name="PROFESSION_ID" />
 		</many-to-one>
 		<list name="budgets" table="LABOR_BUDGET" inverse="true" lazy="true"
 			fetch="select">
-			<key column="PROFFESIONAL_ID2" not-null="true" />
+			<key column="PROFESSIONAL_ID2" not-null="true" />
 			<list-index column="PROF_BUDGET_IDX" />
 			<one-to-many class="LaborBudget" />
 		</list>
 		<list name="feedbacks" table="FEEDBACK" inverse="true" lazy="true"
 			fetch="select">
-			<key column="PROFFESIONAL_ID" not-null="true" />
+			<key column="PROFESSIONAL_ID" not-null="true" />
 			<list-index column="PROF_FBK_IDX" />
 			<one-to-many class="Feedback" />
 		</list>

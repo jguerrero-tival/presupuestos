@@ -1,4 +1,4 @@
-package com.presupuestar.model.proffesion;
+package com.presupuestar.model.profession;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class Category extends DomainObject {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private List<Proffesion> proffesions;
+	private List<Profession> professions;
 
 	public Category() {
 		super();
@@ -23,12 +23,12 @@ public class Category extends DomainObject {
 		this.name = name;
 	}
 
-	public List<Proffesion> getProffesions() {
-		return proffesions;
+	public List<Profession> getProfessions() {
+		return professions;
 	}
 
-	public void setProffesions(List<Proffesion> proffesions) {
-		this.proffesions = proffesions;
+	public void setProfessions(List<Profession> professions) {
+		this.professions = professions;
 	}
 
 }

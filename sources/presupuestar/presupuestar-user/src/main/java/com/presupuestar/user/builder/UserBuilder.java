@@ -1,10 +1,10 @@
 package com.presupuestar.user.builder;
 
-import com.presupuestar.model.proffesion.Proffesion;
+import com.presupuestar.model.profession.Profession;
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
-import com.presupuestar.model.user.Proffesional;
-import com.presupuestar.model.user.ProffesionalType;
+import com.presupuestar.model.user.Professional;
+import com.presupuestar.model.user.ProfessionalType;
 import com.presupuestar.model.user.User;
 import com.presupuestar.model.user.UserAccess;
 import com.presupuestar.model.user.profile.BasicProfile;
@@ -26,10 +26,10 @@ public class UserBuilder {
 		return builder;
 	}
 
-	public static UserBuilder forProffesional() {
-		Proffesional proffesional = new Proffesional();
-		proffesional.setProfile(new FullProfile());
-		UserBuilder builder = new UserBuilder(proffesional);
+	public static UserBuilder forProfessional() {
+		Professional professional = new Professional();
+		professional.setProfile(new FullProfile());
+		UserBuilder builder = new UserBuilder(professional);
 		return builder;
 	}
 
@@ -54,20 +54,20 @@ public class UserBuilder {
 		((FullProfile) user.getProfile()).setReason(reason);
 	}
 
-	public void buildProffesionalType(ProffesionalType type) {
-		((Proffesional) user).setType(type);
+	public void buildProfessionalType(ProfessionalType type) {
+		((Professional) user).setType(type);
 	}
 
-	public void buildProffesion(Proffesion proffesion) {
-		((Proffesional) user).setProffesion(proffesion);
+	public void buildProfession(Profession profession) {
+		((Professional) user).setProfession(profession);
 	}
 
 	public Person getPerson() {
 		return (Person) user;
 	}
 
-	public Proffesional getProffesional() {
-		return (Proffesional) user;
+	public Professional getProfessional() {
+		return (Professional) user;
 	}
 
 	public Commerce getCommerce() {

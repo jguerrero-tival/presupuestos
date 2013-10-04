@@ -35,7 +35,7 @@ public class BudgetDAOTest {
 					.getItems()) {
 				Assert.assertNotNull(item);
 			}
-			Assert.assertNotNull(budget.getLaborBudget().getProffesional());
+			Assert.assertNotNull(budget.getLaborBudget().getProfessional());
 			Assert.assertNotNull(budget.getProductBudget());
 			for (ItemBudget itemBudget : budget.getProductBudget()
 					.getItemsBudget()) {

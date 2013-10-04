@@ -19,7 +19,7 @@
 			<list>
 				<value>com/presupuestar/db/model/budget/*.hbm.xml</value>
 				<value>com/presupuestar/db/model/feedback/*.hbm.xml</value>
-				<value>com/presupuestar/db/model/proffesion/*.hbm.xml</value>
+				<value>com/presupuestar/db/model/profession/*.hbm.xml</value>
 				<value>com/presupuestar/db/model/user/*.hbm.xml</value>
 				<value>com/presupuestar/db/model/user/profile/*.hbm.xml</value>
 				<value>com/presupuestar/db/model/user/store/*.hbm.xml</value>

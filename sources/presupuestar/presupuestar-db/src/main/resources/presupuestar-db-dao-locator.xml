@@ -10,8 +10,8 @@
 				<entry key="com.presupuestar.db.dao.CommerceDAO" value-ref="commerceDao" />
 				<entry key="com.presupuestar.db.dao.FeedbackDAO" value-ref="feedbackDao" />
 				<entry key="com.presupuestar.db.dao.PersonDAO" value-ref="personDao" />
-				<entry key="com.presupuestar.db.dao.ProffesionalDAO" value-ref="proffesionalDao" />
-				<entry key="com.presupuestar.db.dao.ProffesionDAO" value-ref="proffesionDao" />
+				<entry key="com.presupuestar.db.dao.ProfessionalDAO" value-ref="professionalDao" />
+				<entry key="com.presupuestar.db.dao.ProfessionDAO" value-ref="professionDao" />
 			</map>
 		</property>
 	</bean>

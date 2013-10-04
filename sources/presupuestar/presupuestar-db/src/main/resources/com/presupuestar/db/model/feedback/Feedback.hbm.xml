@@ -20,7 +20,7 @@
 		<any name="feedbackOn" id-type="long" meta-type="string">
 			<meta-value value="BUDGET" class="Budget" />
 			<meta-value value="COMMERCE" class="Commerce" />
-			<meta-value value="PROFFESIONAL" class="Proffesional" />
+			<meta-value value="PROFESSIONAL" class="Professional" />
 			<column name="FEEDBACK_ON_CLASS" />
 			<column name="FEEDBACK_ON_ID" />
 		</any>

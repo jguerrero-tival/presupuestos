@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
-import com.presupuestar.model.user.Proffesional;
+import com.presupuestar.model.user.Professional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:presupuestar-user.xml" })
@@ -18,7 +18,7 @@ import com.presupuestar.model.user.Proffesional;
 public class UserLoginTest {
 
 	private static final String COMMERCE_EMAIL = "commerce@presupuestar.com",
-			PROFFESIONAL_EMAIL = "proffesional@presupuestar.com",
+			PROFESSIONAL_EMAIL = "professional@presupuestar.com",
 			PERSON_EMAIL = "person@presupuestar.com", PASSWORD = "password";
 	private static String WRONG_EMAIL = "wrong@presupuestar.com",
 			WRONG_PASSWORD = "wrong-password";
@@ -26,7 +26,7 @@ public class UserLoginTest {
 	@Autowired
 	private CommerceService commerceService;
 	@Autowired
-	private ProffesionalService proffesionalService;
+	private ProfessionalService professionalService;
 	@Autowired
 	private PersonService personService;
 	
@@ -53,28 +53,28 @@ public class UserLoginTest {
 	}
 
 	@Test
-	public void proffesionalUserLogin() {
-		Proffesional proffesional = proffesionalService.userLogin(
-				PROFFESIONAL_EMAIL, PASSWORD);
-		Assert.assertNotNull(proffesional);
-		Assert.assertNotNull(proffesional.getAccess());
-		Assert.assertEquals(PROFFESIONAL_EMAIL, proffesional.getAccess()
+	public void professionalUserLogin() {
+		Professional professional = professionalService.userLogin(
+				PROFESSIONAL_EMAIL, PASSWORD);
+		Assert.assertNotNull(professional);
+		Assert.assertNotNull(professional.getAccess());
+		Assert.assertEquals(PROFESSIONAL_EMAIL, professional.getAccess()
 				.getEmail());
-		Assert.assertEquals(PASSWORD, proffesional.getAccess().getPassword());
+		Assert.assertEquals(PASSWORD, professional.getAccess().getPassword());
 	}
 
 	@Test
-	public void proffesionalLoginWithWrongEmail() {
-		Proffesional proffesional = proffesionalService.userLogin(WRONG_EMAIL,
+	public void professionalLoginWithWrongEmail() {
+		Professional professional = professionalService.userLogin(WRONG_EMAIL,
 				PASSWORD);
-		Assert.assertNull(proffesional);
+		Assert.assertNull(professional);
 	}
 
 	@Test
-	public void proffesionalLoginWithWrongPassword() {
-		Proffesional proffesional = proffesionalService.userLogin(PERSON_EMAIL,
+	public void professionalLoginWithWrongPassword() {
+		Professional professional = professionalService.userLogin(PERSON_EMAIL,
 				WRONG_PASSWORD);
-		Assert.assertNull(proffesional);
+		Assert.assertNull(professional);
 	}
 
 	@Test

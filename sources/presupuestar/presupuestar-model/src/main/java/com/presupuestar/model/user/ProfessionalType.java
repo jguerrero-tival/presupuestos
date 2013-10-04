@@ -1,5 +1,5 @@
 package com.presupuestar.model.user;
 
-public enum ProffesionalType {
+public enum ProfessionalType {
 	COMPANY, SELF_EMPLOYED;
 }

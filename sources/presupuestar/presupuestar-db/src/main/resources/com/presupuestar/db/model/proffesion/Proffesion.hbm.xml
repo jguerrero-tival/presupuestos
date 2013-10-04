@@ -3,10 +3,10 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.presupuestar.model.proffesion.Proffesion"
-		schema="PRESUPUESTAR" table="PROFFESION" entity-name="Proffesion">
+	<class name="com.presupuestar.model.profession.Profession"
+		schema="PRESUPUESTAR" table="PROFESSION" entity-name="Profession">
 
-		<id name="id" type="long" column="PROFFESION_ID">
+		<id name="id" type="long" column="PROFESSION_ID">
 			<generator class="native" />
 		</id>
 

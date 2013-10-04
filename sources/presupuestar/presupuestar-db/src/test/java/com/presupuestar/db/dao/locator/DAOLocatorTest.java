@@ -11,8 +11,8 @@ import com.presupuestar.db.dao.CommerceDAO;
 import com.presupuestar.db.dao.FeedbackDAO;
 import com.presupuestar.db.dao.HibernateDAO;
 import com.presupuestar.db.dao.PersonDAO;
-import com.presupuestar.db.dao.ProffesionDAO;
-import com.presupuestar.db.dao.ProffesionalDAO;
+import com.presupuestar.db.dao.ProfessionDAO;
+import com.presupuestar.db.dao.ProfessionalDAO;
 import com.presupuestar.db.dao.exception.LookupDAOException;
 import com.presupuestar.model.DomainObject;
 
@@ -31,12 +31,12 @@ public class DAOLocatorTest {
 		Assert.notNull(DAOLocator.getInstance().getDao(FeedbackDAO.class));
 		Assert.isInstanceOf(FeedbackDAO.class,
 				DAOLocator.getInstance().getDao(FeedbackDAO.class));
-		Assert.notNull(DAOLocator.getInstance().getDao(ProffesionalDAO.class));
-		Assert.isInstanceOf(ProffesionalDAO.class, DAOLocator.getInstance()
-				.getDao(ProffesionalDAO.class));
-		Assert.notNull(DAOLocator.getInstance().getDao(ProffesionDAO.class));
-		Assert.isInstanceOf(ProffesionDAO.class, DAOLocator.getInstance()
-				.getDao(ProffesionDAO.class));
+		Assert.notNull(DAOLocator.getInstance().getDao(ProfessionalDAO.class));
+		Assert.isInstanceOf(ProfessionalDAO.class, DAOLocator.getInstance()
+				.getDao(ProfessionalDAO.class));
+		Assert.notNull(DAOLocator.getInstance().getDao(ProfessionDAO.class));
+		Assert.isInstanceOf(ProfessionDAO.class, DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class));
 		Assert.notNull(DAOLocator.getInstance().getDao(PersonDAO.class));
 		Assert.isInstanceOf(PersonDAO.class,
 				DAOLocator.getInstance().getDao(PersonDAO.class));

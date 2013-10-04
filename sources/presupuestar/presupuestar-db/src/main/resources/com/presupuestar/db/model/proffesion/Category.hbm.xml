@@ -3,7 +3,7 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.presupuestar.model.proffesion.Category" schema="PRESUPUESTAR"
+	<class name="com.presupuestar.model.profession.Category" schema="PRESUPUESTAR"
 		table="CATEGORY" entity-name="Category">
 
 		<id name="id" type="long" column="CATEGORY_ID">
@@ -12,11 +12,11 @@
 
 		<property name="name" type="string" column="NAME" length="30"
 			not-null="true" />
-		<list name="proffesions" table="PROFFESION" inverse="true" lazy="true"
+		<list name="professions" table="PROFESSION" inverse="true" lazy="true"
 			fetch="select">
 			<key column="CATEGORY_ID" not-null="true" />
 	         <list-index column="LIST_INDEX"/>
-			<one-to-many class="Proffesion" />
+			<one-to-many class="Profession" />
 		</list>
 
 	</class>

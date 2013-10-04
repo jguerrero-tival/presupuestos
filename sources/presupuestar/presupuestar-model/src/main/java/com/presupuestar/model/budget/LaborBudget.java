@@ -1,14 +1,14 @@
 package com.presupuestar.model.budget;
 
 import com.presupuestar.model.DomainObject;
-import com.presupuestar.model.user.Proffesional;
+import com.presupuestar.model.user.Professional;
 
 public class LaborBudget extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
 	
 	private double amount;
-	private Proffesional proffesional;
+	private Professional professional;
 	private LaborDetail laborDetail;
 	private ProductsDetail productsDetail;
 
@@ -24,12 +24,12 @@ public class LaborBudget extends DomainObject {
 		this.amount = amount;
 	}
 
-	public Proffesional getProffesional() {
-		return proffesional;
+	public Professional getProfessional() {
+		return professional;
 	}
 
-	public void setProffesional(Proffesional proffesional) {
-		this.proffesional = proffesional;
+	public void setProfessional(Professional professional) {
+		this.professional = professional;
 	}
 
 	public LaborDetail getLaborDetail() {

@@ -1,15 +1,15 @@
-package com.presupuestar.model.proffesion;
+package com.presupuestar.model.profession;
 
 import com.presupuestar.model.DomainObject;
 
-public class Proffesion extends DomainObject {
+public class Profession extends DomainObject {
 
 	private static final long serialVersionUID = 1L;
 
 	private String name;
 	private Category category;
 
-	public Proffesion() {
+	public Profession() {
 		super();
 	}
 

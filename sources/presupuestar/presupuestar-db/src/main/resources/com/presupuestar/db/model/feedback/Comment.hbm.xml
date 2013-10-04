@@ -17,7 +17,7 @@
 		<any name="author" id-type="long" meta-type="string">
 			<meta-value value="COMMERCE" class="Commerce" />
 			<meta-value value="PERSON" class="Person" />
-			<meta-value value="PROFFESIONAL" class="Proffesional" />
+			<meta-value value="PROFESSIONAL" class="Professional" />
 			<column name="AUTHOR_CLASS" />
 			<column name="AUTHOR_ID" />
 		</any>

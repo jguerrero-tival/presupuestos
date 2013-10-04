@@ -11,9 +11,9 @@
 		</id>
 
 		<property name="amount" type="double" column="AMOUNT" not-null="true" />
-		<many-to-one name="proffesional" class="Proffesional"
+		<many-to-one name="professional" class="Professional"
 			not-null="true" cascade="none" unique="true">
-			<column name="PROFFESIONAL_ID" />
+			<column name="PROFESSIONAL_ID" />
 		</many-to-one>
 		<many-to-one name="laborDetail" class="LaborDetail"
 			not-null="true" cascade="all" unique="true">

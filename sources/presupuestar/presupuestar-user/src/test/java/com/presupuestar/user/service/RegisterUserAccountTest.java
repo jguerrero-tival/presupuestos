@@ -8,12 +8,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.presupuestar.db.dao.ProffesionDAO;
+import com.presupuestar.db.dao.ProfessionDAO;
 import com.presupuestar.db.dao.locator.DAOLocator;
-import com.presupuestar.model.proffesion.Proffesion;
+import com.presupuestar.model.profession.Profession;
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
-import com.presupuestar.model.user.Proffesional;
+import com.presupuestar.model.user.Professional;
 import com.presupuestar.model.user.User;
 import com.presupuestar.user.exception.InvalidEmailFormatException;
 
@@ -31,7 +31,7 @@ public class RegisterUserAccountTest {
 	@Autowired
 	private CommerceService commerceService;
 	@Autowired
-	private ProffesionalService proffesionalService;
+	private ProfessionalService professionalService;
 	@Autowired
 	private PersonService personService;
 
@@ -51,35 +51,35 @@ public class RegisterUserAccountTest {
 	}
 
 	@Test
-	public void refisterNewProffesionalAccount()
+	public void refisterNewProfessionalAccount()
 			throws InvalidEmailFormatException {
-		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
-				.getDao(ProffesionDAO.class);
-		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
-		Proffesional proffesional = proffesionalService
-				.registerNewProffesionalAccount(EMAIL, PASSWORD, FIRST_NAME,
-						LAST_NAME, proffesion);
-		Assert.assertNotNull(proffesional);
-		assertUserAccess(proffesional);
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		Profession profession = professionDao.getById(Long.valueOf(1));
+		Professional professional = professionalService
+				.registerNewProfessionalAccount(EMAIL, PASSWORD, FIRST_NAME,
+						LAST_NAME, profession);
+		Assert.assertNotNull(professional);
+		assertUserAccess(professional);
 	}
 
 	@Test(expected = InvalidEmailFormatException.class)
-	public void registerNewProffesionalUsingWrongEmail()
+	public void registerNewProfessionalUsingWrongEmail()
 			throws InvalidEmailFormatException {
-		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
-				.getDao(ProffesionDAO.class);
-		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
-		proffesionalService.registerNewProffesionalAccount(WRONG_EMAIL,
-				PASSWORD, FIRST_NAME, LAST_NAME, proffesion);
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		Profession profession = professionDao.getById(Long.valueOf(1));
+		professionalService.registerNewProfessionalAccount(WRONG_EMAIL,
+				PASSWORD, FIRST_NAME, LAST_NAME, profession);
 	}
 
 	@Test
 	public void refisterNewCompanyAccount() throws InvalidEmailFormatException {
-		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
-				.getDao(ProffesionDAO.class);
-		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
-		Proffesional company = proffesionalService.registerNewCompanyAccount(
-				EMAIL, PASSWORD, REASON, proffesion);
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		Profession profession = professionDao.getById(Long.valueOf(1));
+		Professional company = professionalService.registerNewCompanyAccount(
+				EMAIL, PASSWORD, REASON, profession);
 		Assert.assertNotNull(company);
 		assertUserAccess(company);
 	}
@@ -87,11 +87,11 @@ public class RegisterUserAccountTest {
 	@Test(expected = InvalidEmailFormatException.class)
 	public void refisterNewCompanyUsingWrongEmail()
 			throws InvalidEmailFormatException {
-		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
-				.getDao(ProffesionDAO.class);
-		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
-		proffesionalService.registerNewCompanyAccount(WRONG_EMAIL, PASSWORD,
-				REASON, proffesion);
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		Profession profession = professionDao.getById(Long.valueOf(1));
+		professionalService.registerNewCompanyAccount(WRONG_EMAIL, PASSWORD,
+				REASON, profession);
 	}
 
 	@Test

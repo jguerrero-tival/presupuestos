@@ -3,11 +3,11 @@ package com.presupuestar.user.builder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.presupuestar.model.proffesion.Proffesion;
+import com.presupuestar.model.profession.Profession;
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
-import com.presupuestar.model.user.Proffesional;
-import com.presupuestar.model.user.ProffesionalType;
+import com.presupuestar.model.user.Professional;
+import com.presupuestar.model.user.ProfessionalType;
 import com.presupuestar.model.user.User;
 import com.presupuestar.model.user.profile.BasicProfile;
 import com.presupuestar.model.user.profile.FullProfile;
@@ -31,8 +31,8 @@ public class UserBuilderTest {
 	}
 
 	@Test(expected = ClassCastException.class)
-	public void buildPersonFailGetProffesional() {
-		UserBuilder.forPerson().getProffesional();
+	public void buildPersonFailGetProfessional() {
+		UserBuilder.forPerson().getProfessional();
 	}
 
 	@Test(expected = ClassCastException.class)
@@ -41,30 +41,30 @@ public class UserBuilderTest {
 	}
 
 	@Test
-	public void buildProffesional() {
-		UserBuilder builder = UserBuilder.forProffesional();
+	public void buildProfessional() {
+		UserBuilder builder = UserBuilder.forProfessional();
 		builder.buildUserAccess(EMAIL, PASSWORD);
 		builder.buildName(FIRST_NAME, LAST_NAME);
-		builder.buildProffesionalType(ProffesionalType.SELF_EMPLOYED);
-		builder.buildProffesion(new Proffesion());
-		Proffesional proffesional = builder.getProffesional();
-		assertUser(proffesional, Proffesional.class);
-		assertUserAccess(proffesional);
-		assertProffesionalProfile(proffesional);
-		Assert.assertNotNull(proffesional.getType());
-		Assert.assertEquals(ProffesionalType.SELF_EMPLOYED,
-				proffesional.getType());
-		Assert.assertNotNull(proffesional.getProffesion());
+		builder.buildProfessionalType(ProfessionalType.SELF_EMPLOYED);
+		builder.buildProfession(new Profession());
+		Professional professional = builder.getProfessional();
+		assertUser(professional, Professional.class);
+		assertUserAccess(professional);
+		assertProfessionalProfile(professional);
+		Assert.assertNotNull(professional.getType());
+		Assert.assertEquals(ProfessionalType.SELF_EMPLOYED,
+				professional.getType());
+		Assert.assertNotNull(professional.getProfession());
 	}
 
 	@Test(expected = ClassCastException.class)
-	public void buildProffesionalFailGetPerson() {
-		UserBuilder.forProffesional().getPerson();
+	public void buildProfessionalFailGetPerson() {
+		UserBuilder.forProfessional().getPerson();
 	}
 
 	@Test(expected = ClassCastException.class)
-	public void buildProffesionalFailGetCommerce() {
-		UserBuilder.forProffesional().getCommerce();
+	public void buildProfessionalFailGetCommerce() {
+		UserBuilder.forProfessional().getCommerce();
 	}
 
 	@Test
@@ -84,13 +84,13 @@ public class UserBuilderTest {
 	}
 
 	@Test(expected = ClassCastException.class)
-	public void buildCommerceFailGetProffesional() {
-		UserBuilder.forCommerce().getProffesional();
+	public void buildCommerceFailGetProfessional() {
+		UserBuilder.forCommerce().getProfessional();
 	}
 
-	private void assertUser(User proffesional, Class<? extends User> userClass) {
-		Assert.assertNotNull(proffesional);
-		Assert.assertEquals(userClass, proffesional.getClass());
+	private void assertUser(User professional, Class<? extends User> userClass) {
+		Assert.assertNotNull(professional);
+		Assert.assertEquals(userClass, professional.getClass());
 	}
 
 	private void assertUserAccess(User user) {
@@ -107,11 +107,11 @@ public class UserBuilderTest {
 		Assert.assertEquals(LAST_NAME, profile.getLastName());
 	}
 
-	private void assertProffesionalProfile(User proffesional) {
-		Assert.assertNotNull(proffesional.getProfile());
-		Assert.assertEquals(FullProfile.class, proffesional.getProfile()
+	private void assertProfessionalProfile(User professional) {
+		Assert.assertNotNull(professional.getProfile());
+		Assert.assertEquals(FullProfile.class, professional.getProfile()
 				.getClass());
-		FullProfile profile = (FullProfile) proffesional.getProfile();
+		FullProfile profile = (FullProfile) professional.getProfile();
 		Assert.assertEquals(FIRST_NAME, profile.getFirstName());
 		Assert.assertEquals(LAST_NAME, profile.getLastName());
 		Assert.assertNull(profile.getReason());
