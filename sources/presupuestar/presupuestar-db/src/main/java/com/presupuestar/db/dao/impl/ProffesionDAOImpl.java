@@ -10,4 +10,14 @@ public class ProffesionDAOImpl extends AbstractHibernateDAO<Proffesion>
 		super(Proffesion.class);
 	}
 
+	@Override
+	public Proffesion getByName(String proffesion) {
+		StringBuilder query = new StringBuilder();
+		query.append("from Proffesion where name = '");
+		query.append(proffesion);
+		query.append("'");
+		return (Proffesion) getCurrentSession().createQuery(query.toString())
+				.uniqueResult();
+	}
+
 }

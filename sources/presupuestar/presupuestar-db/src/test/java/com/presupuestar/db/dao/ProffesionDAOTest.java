@@ -17,6 +17,9 @@ import com.presupuestar.model.proffesion.Proffesion;
 @Transactional
 public class ProffesionDAOTest {
 
+	private static final String PROFFESION = "Arquitecto de Software";
+	private static final String WRONG_PROFFESION = "Vago";
+
 	@Test
 	public void getAllProffesionals() {
 		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
@@ -31,6 +34,23 @@ public class ProffesionDAOTest {
 				Assert.assertNotNull(innerProffesion);
 			}
 		}
+	}
+
+	@Test
+	public void getProffesionByName() {
+		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
+				.getDao(ProffesionDAO.class);
+		Proffesion proffesion = proffesionDao.getByName(PROFFESION);
+		Assert.assertNotNull(proffesion);
+		Assert.assertEquals(PROFFESION, proffesion.getName());
+	}
+
+	@Test
+	public void getProffesionByWrongName() {
+		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
+				.getDao(ProffesionDAO.class);
+		Proffesion proffesion = proffesionDao.getByName(WRONG_PROFFESION);
+		Assert.assertNull(proffesion);
 	}
 
 }
