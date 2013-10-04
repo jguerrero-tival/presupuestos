@@ -18,7 +18,7 @@ import com.presupuestar.model.user.profile.Address;
 import com.presupuestar.model.user.profile.Phone;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-db.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-db.xml" })
 @Transactional
 public class ProfessionalDAOTest {
 

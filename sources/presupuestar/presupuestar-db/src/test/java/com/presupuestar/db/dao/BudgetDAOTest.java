@@ -16,7 +16,7 @@ import com.presupuestar.model.budget.ItemBudget;
 import com.presupuestar.model.feedback.Feedback;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-db.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-db.xml" })
 @Transactional
 public class BudgetDAOTest {
 

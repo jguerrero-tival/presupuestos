@@ -13,7 +13,7 @@ import com.presupuestar.db.dao.locator.DAOLocator;
 import com.presupuestar.model.profession.Profession;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-db.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-db.xml" })
 @Transactional
 public class ProfessionDAOTest {
 

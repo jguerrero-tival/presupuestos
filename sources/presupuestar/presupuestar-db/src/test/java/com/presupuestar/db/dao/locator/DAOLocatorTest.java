@@ -17,7 +17,7 @@ import com.presupuestar.db.dao.exception.LookupDAOException;
 import com.presupuestar.model.DomainObject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-db.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-db.xml" })
 public class DAOLocatorTest {
 
 	@Test
