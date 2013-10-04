@@ -13,7 +13,7 @@ import com.presupuestar.model.user.Person;
 import com.presupuestar.model.user.Professional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-user.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-user.xml" })
 @Transactional
 public class UserLoginTest {
 

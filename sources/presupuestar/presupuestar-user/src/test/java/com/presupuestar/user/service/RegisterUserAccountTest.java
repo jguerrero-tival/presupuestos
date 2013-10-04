@@ -18,7 +18,7 @@ import com.presupuestar.model.user.User;
 import com.presupuestar.user.exception.InvalidEmailFormatException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:presupuestar-user.xml" })
+@ContextConfiguration(locations = { "classpath:test-presupuestar-user.xml" })
 @Transactional
 public class RegisterUserAccountTest {
 
