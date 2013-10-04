@@ -3,6 +3,7 @@ package com.presupuestar.user.service;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
 import com.presupuestar.model.user.Proffesional;
-import com.presupuestar.user.service.impl.CommerceServiceImpl;
-import com.presupuestar.user.service.impl.PersonServiceImpl;
-import com.presupuestar.user.service.impl.ProffesionalServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:presupuestar-user.xml" })
@@ -25,10 +23,13 @@ public class UserLoginTest {
 	private static String WRONG_EMAIL = "wrong@presupuestar.com",
 			WRONG_PASSWORD = "wrong-password";
 
-	private CommerceService commerceService = new CommerceServiceImpl();
-	private ProffesionalService proffesionalService = new ProffesionalServiceImpl();
-	private PersonService personService = new PersonServiceImpl();
-
+	@Autowired
+	private CommerceService commerceService;
+	@Autowired
+	private ProffesionalService proffesionalService;
+	@Autowired
+	private PersonService personService;
+	
 	@Test
 	public void commerceLogin() {
 		Commerce commerce = commerceService.userLogin(COMMERCE_EMAIL, PASSWORD);

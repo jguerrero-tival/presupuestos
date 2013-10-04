@@ -3,6 +3,7 @@ package com.presupuestar.user.service;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +15,7 @@ import com.presupuestar.model.user.Commerce;
 import com.presupuestar.model.user.Person;
 import com.presupuestar.model.user.Proffesional;
 import com.presupuestar.model.user.User;
-import com.presupuestar.user.service.impl.CommerceServiceImpl;
-import com.presupuestar.user.service.impl.PersonServiceImpl;
-import com.presupuestar.user.service.impl.ProffesionalServiceImpl;
+import com.presupuestar.user.exception.InvalidEmailFormatException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:presupuestar-user.xml" })
@@ -25,23 +24,35 @@ public class RegisterUserAccountTest {
 
 	private static final String EMAIL = "sebastianlavie@gmail.com",
 			PASSWORD = "password";
+	private static final String WRONG_EMAIL = "..wrong@email.com.";
 	private static final String FIRST_NAME = "Sebastian", LAST_NAME = "Lavie";
 	private static final String REASON = "My Company S.A.";
 
-	private CommerceService commerceService = new CommerceServiceImpl();
-	private ProffesionalService proffesionalService = new ProffesionalServiceImpl();
-	private PersonService personService = new PersonServiceImpl();
+	@Autowired
+	private CommerceService commerceService;
+	@Autowired
+	private ProffesionalService proffesionalService;
+	@Autowired
+	private PersonService personService;
 
 	@Test
-	public void registerNewCommerceAccount() {
+	public void registerNewCommerceAccount() throws InvalidEmailFormatException {
 		Commerce commerce = commerceService.registerNewCommerceAccount(EMAIL,
 				PASSWORD, REASON);
 		Assert.assertNotNull(commerce);
 		assertUserAccess(commerce);
 	}
 
+	@Test(expected = InvalidEmailFormatException.class)
+	public void registerNewCommerceUsingWrongEmail()
+			throws InvalidEmailFormatException {
+		commerceService.registerNewCommerceAccount(WRONG_EMAIL, PASSWORD,
+				REASON);
+	}
+
 	@Test
-	public void refisterNewProffesionalAccount() {
+	public void refisterNewProffesionalAccount()
+			throws InvalidEmailFormatException {
 		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
 				.getDao(ProffesionDAO.class);
 		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
@@ -52,8 +63,18 @@ public class RegisterUserAccountTest {
 		assertUserAccess(proffesional);
 	}
 
+	@Test(expected = InvalidEmailFormatException.class)
+	public void registerNewProffesionalUsingWrongEmail()
+			throws InvalidEmailFormatException {
+		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
+				.getDao(ProffesionDAO.class);
+		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
+		proffesionalService.registerNewProffesionalAccount(WRONG_EMAIL,
+				PASSWORD, FIRST_NAME, LAST_NAME, proffesion);
+	}
+
 	@Test
-	public void refisterNewCompanyAccount() {
+	public void refisterNewCompanyAccount() throws InvalidEmailFormatException {
 		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
 				.getDao(ProffesionDAO.class);
 		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
@@ -63,12 +84,29 @@ public class RegisterUserAccountTest {
 		assertUserAccess(company);
 	}
 
+	@Test(expected = InvalidEmailFormatException.class)
+	public void refisterNewCompanyUsingWrongEmail()
+			throws InvalidEmailFormatException {
+		ProffesionDAO proffesionDao = (ProffesionDAO) DAOLocator.getInstance()
+				.getDao(ProffesionDAO.class);
+		Proffesion proffesion = proffesionDao.getById(Long.valueOf(1));
+		proffesionalService.registerNewCompanyAccount(WRONG_EMAIL, PASSWORD,
+				REASON, proffesion);
+	}
+
 	@Test
-	public void registerNewPersonAccount() {
+	public void registerNewPersonAccount() throws InvalidEmailFormatException {
 		Person person = personService.registerNewPersonAccount(EMAIL, PASSWORD,
 				FIRST_NAME, LAST_NAME);
 		Assert.assertNotNull(person);
 		assertUserAccess(person);
+	}
+
+	@Test(expected = InvalidEmailFormatException.class)
+	public void registerNewPersonUsingWrongEmail()
+			throws InvalidEmailFormatException {
+		personService.registerNewPersonAccount(WRONG_EMAIL, PASSWORD,
+				FIRST_NAME, LAST_NAME);
 	}
 
 	private void assertUserAccess(User user) {

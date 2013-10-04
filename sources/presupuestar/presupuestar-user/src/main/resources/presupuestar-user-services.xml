@@ -3,8 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="commerceService" class="com.presupuestar.user.service.impl.CommerceServiceImpl"/>
-	<bean id="personService" class="com.presupuestar.user.service.impl.PersonServiceImpl"/>
-	<bean id="proffesionalService" class="com.presupuestar.user.service.impl.ProffesionalServiceImpl"/>
+	<bean id="emailFormatValidator" class="com.presupuestar.user.validator.EmailFormatValidator"/>
+
+	<bean id="commerceService" class="com.presupuestar.user.service.impl.CommerceServiceImpl">
+		<property name="emailFormatValidator" ref="emailFormatValidator"/>
+	</bean>
+	<bean id="personService" class="com.presupuestar.user.service.impl.PersonServiceImpl">
+		<property name="emailFormatValidator" ref="emailFormatValidator"/>
+	</bean>
+	<bean id="proffesionalService" class="com.presupuestar.user.service.impl.ProffesionalServiceImpl">
+		<property name="emailFormatValidator" ref="emailFormatValidator"/>
+	</bean>
 
 </beans>
