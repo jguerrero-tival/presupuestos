@@ -1,8 +1,11 @@
 package com.presupuestar.db.dao.impl;
 
+import org.springframework.stereotype.Repository;
+
 import com.presupuestar.db.dao.PersonDAO;
 import com.presupuestar.model.user.Person;
 
+@Repository
 public class PersonDAOImpl extends AbstractHibernateDAO<Person> implements
 		PersonDAO {
 

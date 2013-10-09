@@ -1,8 +1,11 @@
 package com.presupuestar.db.dao.impl;
 
+import org.springframework.stereotype.Repository;
+
 import com.presupuestar.db.dao.CommerceDAO;
 import com.presupuestar.model.user.Commerce;
 
+@Repository
 public class CommerceDAOImpl extends AbstractHibernateDAO<Commerce> implements
 		CommerceDAO {
 

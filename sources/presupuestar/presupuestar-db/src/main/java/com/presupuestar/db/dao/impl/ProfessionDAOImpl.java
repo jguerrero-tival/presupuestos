@@ -2,10 +2,13 @@ package com.presupuestar.db.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.presupuestar.db.dao.ProfessionDAO;
 import com.presupuestar.model.profession.Category;
 import com.presupuestar.model.profession.Profession;
 
+@Repository
 public class ProfessionDAOImpl extends AbstractHibernateDAO<Profession>
 		implements ProfessionDAO {
 
