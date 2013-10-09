@@ -26,8 +26,8 @@ public class ProfessionDAOImpl extends AbstractHibernateDAO<Profession>
 				.uniqueResult();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Profession> getByCategory(Category category) {
 		StringBuilder query = new StringBuilder();
 		query.append("from Profession where category.id = '");
