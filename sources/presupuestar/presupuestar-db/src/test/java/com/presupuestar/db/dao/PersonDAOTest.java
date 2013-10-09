@@ -3,6 +3,7 @@ package com.presupuestar.db.dao;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,14 +18,20 @@ import com.presupuestar.model.user.Person;
 @Transactional
 public class PersonDAOTest {
 
+	private PersonDAO personDao;
+
+	@Before
+	public void setUp() {
+		personDao = (PersonDAO) DAOLocator.getInstance()
+				.getDao(PersonDAO.class);
+	}
+
 	private static final String EMAIL = "person@presupuestar.com",
 			PASSWORD = "password";
 	private static final String WRONG_EMAIL = "wrong@presupuestar.com";
 
 	@Test
 	public void getAllPersons() {
-		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
-				PersonDAO.class);
 		List<Person> persons = personDao.getAll();
 		Assert.assertNotNull(persons);
 		for (Person person : persons) {
@@ -36,8 +43,6 @@ public class PersonDAOTest {
 
 	@Test
 	public void getPersonByLoginAccess() {
-		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
-				PersonDAO.class);
 		Person person = personDao.getByLoginAccess(EMAIL, PASSWORD);
 		Assert.assertNotNull(person);
 		Assert.assertNotNull(person.getAccess());
@@ -47,8 +52,6 @@ public class PersonDAOTest {
 
 	@Test
 	public void getPersonByWrongLoginAccess() {
-		PersonDAO personDao = (PersonDAO) DAOLocator.getInstance().getDao(
-				PersonDAO.class);
 		Person person = personDao.getByLoginAccess(WRONG_EMAIL, PASSWORD);
 		Assert.assertNull(person);
 	}

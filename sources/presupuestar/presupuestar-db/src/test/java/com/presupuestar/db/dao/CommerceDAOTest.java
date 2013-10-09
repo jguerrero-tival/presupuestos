@@ -3,6 +3,7 @@ package com.presupuestar.db.dao;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,10 +27,16 @@ public class CommerceDAOTest {
 			PASSWORD = "password";
 	private static final String WRONG_EMAIL = "wrong@presupuestar.com";
 
+	private CommerceDAO commerceDAO;
+
+	@Before
+	public void setUp() {
+		commerceDAO = (CommerceDAO) DAOLocator.getInstance().getDao(
+				CommerceDAO.class);
+	}
+
 	@Test
 	public void getAllCommerces() {
-		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
-				.getDao(CommerceDAO.class);
 		List<Commerce> commerces = commerceDAO.getAll();
 		Assert.assertNotNull(commerces);
 		for (Commerce commerce : commerces) {
@@ -59,8 +66,6 @@ public class CommerceDAOTest {
 
 	@Test
 	public void getPersonByLoginAccess() {
-		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
-				.getDao(CommerceDAO.class);
 		Commerce commerce = commerceDAO.getByLoginAccess(EMAIL, PASSWORD);
 		Assert.assertNotNull(commerce);
 		Assert.assertNotNull(commerce.getAccess());
@@ -70,8 +75,6 @@ public class CommerceDAOTest {
 
 	@Test
 	public void getPersonByWrongLoginAccess() {
-		CommerceDAO commerceDAO = (CommerceDAO) DAOLocator.getInstance()
-				.getDao(CommerceDAO.class);
 		Commerce commerce = commerceDAO.getByLoginAccess(WRONG_EMAIL, PASSWORD);
 		Assert.assertNull(commerce);
 	}

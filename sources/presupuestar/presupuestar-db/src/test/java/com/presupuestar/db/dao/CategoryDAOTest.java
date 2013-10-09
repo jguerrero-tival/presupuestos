@@ -3,6 +3,7 @@ package com.presupuestar.db.dao;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,10 +18,16 @@ import com.presupuestar.model.profession.Category;
 @Transactional
 public class CategoryDAOTest {
 
+	private CategoryDAO categoryDAO;
+
+	@Before
+	public void setUp() {
+		categoryDAO = (CategoryDAO) DAOLocator.getInstance().getDao(
+				CategoryDAO.class);
+	}
+
 	@Test
 	public void getAllCommerces() {
-		CategoryDAO categoryDAO = (CategoryDAO) DAOLocator.getInstance()
-				.getDao(CategoryDAO.class);
 		List<Category> categories = categoryDAO.getAll();
 		Assert.assertNotNull(categories);
 		for (Category category : categories) {

@@ -3,6 +3,7 @@ package com.presupuestar.db.dao;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,10 +19,16 @@ import com.presupuestar.model.feedback.Feedback;
 @Transactional
 public class FeedbackDAOTest {
 
+	private FeedbackDAO feedbackDAO;
+
+	@Before
+	public void setUp() {
+		feedbackDAO = (FeedbackDAO) DAOLocator.getInstance().getDao(
+				FeedbackDAO.class);
+	}
+
 	@Test
 	public void getAllFeedbacks() {
-		FeedbackDAO feedbackDAO = (FeedbackDAO) DAOLocator.getInstance()
-				.getDao(FeedbackDAO.class);
 		List<Feedback> feedbacks = feedbackDAO.getAll();
 		Assert.assertNotNull(feedbacks);
 		for (Feedback feedback : feedbacks) {
