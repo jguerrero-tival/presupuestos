@@ -7,6 +7,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import com.presupuestar.db.dao.BudgetDAO;
+import com.presupuestar.db.dao.CategoryDAO;
 import com.presupuestar.db.dao.CommerceDAO;
 import com.presupuestar.db.dao.FeedbackDAO;
 import com.presupuestar.db.dao.HibernateDAO;
@@ -25,6 +26,9 @@ public class DAOLocatorTest {
 		Assert.notNull(DAOLocator.getInstance().getDao(BudgetDAO.class));
 		Assert.isInstanceOf(BudgetDAO.class,
 				DAOLocator.getInstance().getDao(BudgetDAO.class));
+		Assert.notNull(DAOLocator.getInstance().getDao(CategoryDAO.class));
+		Assert.isInstanceOf(CategoryDAO.class,
+				DAOLocator.getInstance().getDao(CategoryDAO.class));
 		Assert.notNull(DAOLocator.getInstance().getDao(CommerceDAO.class));
 		Assert.isInstanceOf(CommerceDAO.class,
 				DAOLocator.getInstance().getDao(CommerceDAO.class));

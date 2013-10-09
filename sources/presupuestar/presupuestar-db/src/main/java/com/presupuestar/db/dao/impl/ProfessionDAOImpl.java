@@ -1,6 +1,9 @@
 package com.presupuestar.db.dao.impl;
 
+import java.util.List;
+
 import com.presupuestar.db.dao.ProfessionDAO;
+import com.presupuestar.model.profession.Category;
 import com.presupuestar.model.profession.Profession;
 
 public class ProfessionDAOImpl extends AbstractHibernateDAO<Profession>
@@ -20,4 +23,15 @@ public class ProfessionDAOImpl extends AbstractHibernateDAO<Profession>
 				.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Profession> getByCategory(Category category) {
+		StringBuilder query = new StringBuilder();
+		query.append("from Profession where category.id = '");
+		query.append(category.getId());
+		query.append("'");
+		return getCurrentSession().createQuery(query.toString())
+				.list();
+	}
+	
 }

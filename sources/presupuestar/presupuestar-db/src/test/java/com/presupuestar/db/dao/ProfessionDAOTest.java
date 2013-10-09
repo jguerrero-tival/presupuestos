@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.presupuestar.db.dao.locator.DAOLocator;
+import com.presupuestar.model.profession.Category;
 import com.presupuestar.model.profession.Profession;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,7 +22,7 @@ public class ProfessionDAOTest {
 	private static final String WRONG_PROFESSION = "Vago";
 
 	@Test
-	public void getAllProfessionals() {
+	public void getAllProfessions() {
 		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
 				.getDao(ProfessionDAO.class);
 		List<Profession> professions = professionDao.getAll();
@@ -52,5 +53,29 @@ public class ProfessionDAOTest {
 		Profession profession = professionDao.getByName(WRONG_PROFESSION);
 		Assert.assertNull(profession);
 	}
+	
+	@Test
+	public void getProfessionByCategory() {
+		CategoryDAO categoryDao = (CategoryDAO) DAOLocator.getInstance()
+				.getDao(CategoryDAO.class);
+		Category category = categoryDao.getById(Long.valueOf(1));
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		List<Profession> professions = professionDao.getByCategory(category);
+		Assert.assertNotNull(professions);
+		for (Profession profession : professions) {
+			Assert.assertNotNull(profession);
+		}
+	}
+
+	@Test
+	public void getProfessionByWrongCategory() {
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		List<Profession> professions = professionDao.getByCategory(new Category());
+		Assert.assertNotNull(professions);
+		Assert.assertEquals(0, professions.size());
+	}
+
 
 }

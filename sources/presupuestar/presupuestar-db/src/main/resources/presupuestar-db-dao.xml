@@ -7,6 +7,7 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="budgetDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.BudgetDAOImpl"/>
+	<bean id="categoryDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.CategoryDAOImpl"/>
 	<bean id="commerceDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.CommerceDAOImpl"/>
 	<bean id="feedbackDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.FeedbackDAOImpl"/>
 	<bean id="personDao" parent="abstractDao" class="com.presupuestar.db.dao.impl.PersonDAOImpl"/>
