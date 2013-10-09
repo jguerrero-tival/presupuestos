@@ -53,7 +53,7 @@ public class ProfessionDAOTest {
 		Profession profession = professionDao.getByName(WRONG_PROFESSION);
 		Assert.assertNull(profession);
 	}
-	
+
 	@Test
 	public void getProfessionByCategory() {
 		CategoryDAO categoryDao = (CategoryDAO) DAOLocator.getInstance()
@@ -72,10 +72,17 @@ public class ProfessionDAOTest {
 	public void getProfessionByWrongCategory() {
 		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
 				.getDao(ProfessionDAO.class);
-		List<Profession> professions = professionDao.getByCategory(new Category());
+		List<Profession> professions = professionDao
+				.getByCategory(new Category());
 		Assert.assertNotNull(professions);
 		Assert.assertEquals(0, professions.size());
 	}
 
+	@Test(expected = NullPointerException.class)
+	public void getProfessionByNullCategory() {
+		ProfessionDAO professionDao = (ProfessionDAO) DAOLocator.getInstance()
+				.getDao(ProfessionDAO.class);
+		professionDao.getByCategory(null);
+	}
 
 }
